@@ -1,0 +1,22 @@
+package hanoiTower;
+
+public class hanoiTower {
+
+	private static String indentIncrease = "  ";
+	public static void main(String[] args) {
+		play( 7, "A", "B", "C", "", 0, 7 );
+	}
+
+	public static int play( int count, String source, String mid, String target, String indent, int i, int plate ) {
+		if ( count == 1 ) {
+			System.out.println( i + ":  " + indent + "Move " + plate + ":  "  + source + " --> " + target ); 
+			i = i + 1;
+		}
+		else {
+			i = play( count-1, source, target, mid, indent + indentIncrease, i, plate - 1 );
+			i = play( 1, source, mid, target, indent, i, plate );
+			i = play( count-1, mid, source, target, indent + indentIncrease, i, plate - 1);
+		}
+		return i;
+	}
+}
